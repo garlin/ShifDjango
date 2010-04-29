@@ -4,8 +4,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
 from django.core.urlresolvers import reverse
 
-user = 'garlin'
-password = 'C0r130n3'
+user = ''
+password = ''
 
 def get(request, sid, format='json'):
 	base_url = 'http://shifd.com/api/v1/get?' # API URL (source: http://shifd.com/developers/v1/get)
