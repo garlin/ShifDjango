@@ -89,8 +89,6 @@ def getExtraInfo(request, content, format='json'):
 
 def addBasicAuthStringToUrl(in_url, u, p):
 	# Append usename & password to query string
-	#u = 'garlin'
-	#p = 'C0r130n3'
 	params = {'username' : u, 'password' : p}
 	fullrequesturl = in_url + '&' + "&".join(["%s=%s" % (k, v) for k, v in params.items()])
 	return (fullrequesturl)
