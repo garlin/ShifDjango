@@ -1,5 +1,5 @@
 # Create your views here.
-import urllib
+import urllib2
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
 from django.core.urlresolvers import reverse
@@ -12,7 +12,7 @@ def get(request, sid, format='json'):
 	params = {'sid' : sid, 'format' : format}
 	requesturl = base_url + "&".join(["%s=%s" % (k, v) for k, v in params.items()])
 	fullrequesturl = addBasicAuthStringToUrl(requesturl, user, password)
-	response = urllib.urlopen(fullrequesturl)
+	response = urllib2.urlopen(fullrequesturl)
 	return HttpResponse(response)
 
 def getList(request, type_id='1', state='0', format='json'):
@@ -20,7 +20,7 @@ def getList(request, type_id='1', state='0', format='json'):
 	params = {'type_id' : type_id, 'state' : state, 'format' : format}
 	requesturl = base_url + "&".join(["%s=%s" % (k, v) for k, v in params.items()])
 	fullrequesturl = addBasicAuthStringToUrl(requesturl, user, password)
-	response = urllib.urlopen(fullrequesturl)
+	response = urllib2.urlopen(fullrequesturl)
 	return HttpResponse(response)
 
 def getStats(request, sid, format='json'):
@@ -28,7 +28,7 @@ def getStats(request, sid, format='json'):
 	params = {'sid' : sid, 'format' : format}
 	requesturl = base_url + "&".join(["%s=%s" % (k, v) for k, v in params.items()])
 	fullrequesturl = addBasicAuthStringToUrl(requesturl, user, password)
-	response = urllib.urlopen(fullrequesturl)
+	response = urllib2.urlopen(fullrequesturl)
 	return HttpResponse(response)
 
 def search(request, keywords, type_id='1', state='0', format='json'):
@@ -36,7 +36,7 @@ def search(request, keywords, type_id='1', state='0', format='json'):
 	params = {'keywords' : keywords, 'type_id' : type_id, 'state' : state, 'format' : format}
 	requesturl = base_url + "&".join(["%s=%s" % (k, v) for k, v in params.items()])
 	fullrequesturl = addBasicAuthStringToUrl(requesturl, user, password)
-	response = urllib.urlopen(fullrequesturl)
+	response = urllib2.urlopen(fullrequesturl)
 	return HttpResponse(response)
 
 def add(request, content, type_id='1', tag='', privacy='public', format='json'):
@@ -44,7 +44,7 @@ def add(request, content, type_id='1', tag='', privacy='public', format='json'):
 	params = {'content' : content, 'type_id' : type_id, 'tag' : tag, 'privacy' : privacy, 'format' : format}
 	requesturl = base_url + "&".join(["%s=%s" % (k, v) for k, v in params.items()])
 	fullrequesturl = addBasicAuthStringToUrl(requesturl, user, password)
-	response = urllib.urlopen(fullrequesturl)
+	response = urllib2.urlopen(fullrequesturl)
 	return HttpResponse(response)
 
 def edit(request, sid, content, type_id='1', tag='', privacy='public', format='json'):
@@ -52,7 +52,7 @@ def edit(request, sid, content, type_id='1', tag='', privacy='public', format='j
 	params = {'sid' : sid, 'type_id' : type_id, 'content' : content, 'tag' : tag, 'privacy' : privacy, 'format' : format}
 	requesturl = base_url + "&".join(["%s=%s" % (k, v) for k, v in params.items()])
 	fullrequesturl = addBasicAuthStringToUrl(requesturl, user, password)
-	response = urllib.urlopen(fullrequesturl)
+	response = urllib2.urlopen(fullrequesturl)
 	return HttpResponse(response)
 
 def delete(request, sid, format='json'):
@@ -60,7 +60,7 @@ def delete(request, sid, format='json'):
 	params = {'sid' : sid, 'format' : format}
 	requesturl = base_url + "&".join(["%s=%s" % (k, v) for k, v in params.items()])
 	fullrequesturl = addBasicAuthStringToUrl(requesturl, user, password)
-	response = urllib.urlopen(fullrequesturl)
+	response = urllib2.urlopen(fullrequesturl)
 	return HttpResponse(response)
 
 def archive(request, sid, state='1', format='json'):
@@ -68,7 +68,7 @@ def archive(request, sid, state='1', format='json'):
 	params = {'sid' : sid, 'state' : state, 'format' : format}
 	requesturl = base_url + "&".join(["%s=%s" % (k, v) for k, v in params.items()])
 	fullrequesturl = addBasicAuthStringToUrl(requesturl, user, password)
-	response = urllib.urlopen(fullrequesturl)
+	response = urllib2.urlopen(fullrequesturl)
 	return HttpResponse(response)
 
 def unarchive(request, sid, state='0', format='json'):
@@ -76,7 +76,7 @@ def unarchive(request, sid, state='0', format='json'):
 	params = {'sid' : sid, 'state' : state, 'format' : format}
 	requesturl = base_url + "&".join(["%s=%s" % (k, v) for k, v in params.items()])
 	fullrequesturl = addBasicAuthStringToUrl(requesturl, user, password)
-	response = urllib.urlopen(fullrequesturl)
+	response = urllib2.urlopen(fullrequesturl)
 	return HttpResponse(response)
 
 def getExtraInfo(request, content, format='json'):
@@ -84,7 +84,7 @@ def getExtraInfo(request, content, format='json'):
 	params = {'content' : content, 'format' : format}
 	requesturl = base_url + "&".join(["%s=%s" % (k, v) for k, v in params.items()])
 	fullrequesturl = addBasicAuthStringToUrl(requesturl, user, password)
-	response = urllib.urlopen(fullrequesturl)
+	response = urllib2.urlopen(fullrequesturl)
 	return HttpResponse(response)
 
 def addBasicAuthStringToUrl(in_url, u, p):
