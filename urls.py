@@ -24,7 +24,7 @@ urlpatterns = patterns('myproject.shifd_api.views',
 
 	(r'^search/(?P<keywords>\w+)/(?P<type_id>[1-3])/(?P<state>[0-1])/(?P<format>(json|xml|php))$', 'search'),
 	(r'^search/(?P<keywords>\w+)/(?P<type_id>[1-3])$', 'search'),
-	(r'^search/(?P<keywords>\w+)$', 'search')
+	(r'^search/(?P<keywords>\w+)$', 'search'),
 	(r'^search/$', 'search'),
 
 	(r'^add/(?P<content>\w+)/(?P<type_id>[1-3])/(?P<tag>\w+)/(?P<privacy>(public|private))/(?P<format>(json|xml|php))$', 'add'),
@@ -57,6 +57,8 @@ urlpatterns = patterns('myproject.shifd_api.views',
 	(r'^getExtraInfo/(?P<content>\w+)/(?P<format>(json|xml|php))$', 'getExtraInfo'),
 	(r'^getExtraInfo/(?P<content>\w+)$', 'getExtraInfo'),
 	(r'^getExtraInfo$', 'getExtraInfo'),
+
+	(r'^callback/$','callback'),
 
 	# Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
 	# to INSTALLED_APPS to enable admin documentation:
