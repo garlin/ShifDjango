@@ -8,8 +8,10 @@ user = ''
 password = ''
 
 def get(request, sid='', format='json'):
-	if (request.REQUEST['sid']):
+	try:
 		content = request.REQUEST['sid']
+	except:
+		pass
 	
 	base_url = 'http://shifd.com/api/v1/get?' # API URL (source: http://shifd.com/developers/v1/get)
 	params = {'sid' : sid, 'format' : format}
@@ -19,9 +21,11 @@ def get(request, sid='', format='json'):
 	return HttpResponse(response)
 
 def getList(request, type_id='1', state='0', format='json'):
-	if (request.GET['type_id']):
+	try:
 		type_id = request.REQUEST['type_id']
-	
+	except:
+		pass
+
 	base_url = 'http://shifd.com/api/v1/getList?' # API URL (source: http://shifd.com/developers/v1/getList)
 	params = {'type_id' : type_id, 'state' : state, 'format' : format}
 	requesturl = base_url + "&".join(["%s=%s" % (k, v) for k, v in params.items()])
@@ -30,8 +34,10 @@ def getList(request, type_id='1', state='0', format='json'):
 	return HttpResponse(response)
 
 def getStats(request, sid='', format='json'):
-	if (request.REQUEST['sid']):
+	try:
 		content = request.REQUEST['sid']
+	except:
+		pass
 	
 	base_url = 'http://shifd.com/api/v1/getStats?' # API URL (source: http://shifd.com/developers/v1/getStats)
 	params = {'sid' : sid, 'format' : format}
@@ -41,11 +47,15 @@ def getStats(request, sid='', format='json'):
 	return HttpResponse(response)
 
 def search(request, keywords, type_id='1', state='0', format='json'):
-	if (request.REQUEST['keywords']):
+	try:
 		content = request.REQUEST['keywords']
+	except:
+		pass
 	
-	if (request.GET['type_id']):
+	try:
 		type_id = request.REQUEST['type_id']
+	except:
+		pass
 	
 	base_url = 'http://shifd.com/api/v1/search?' # API URL (source: http://shifd.com/developers/v1/search)
 	params = {'keywords' : urllib.quote(keywords), 'type_id' : type_id, 'state' : state, 'format' : format}
@@ -55,12 +65,15 @@ def search(request, keywords, type_id='1', state='0', format='json'):
 	return HttpResponse(response)
 
 def add(request, content='', type_id='1', tag='', privacy='public', format='json'):
-	#if (request.GET['content'] or request.POST['content']):
-	if (request.REQUEST['content']):
+	try:
 		content = request.REQUEST['content']
+	except:
+		pass
 	
-	if (request.GET['type_id']):
+	try:
 		type_id = request.REQUEST['type_id']
+	except:
+		pass
 	
 	base_url = 'http://shifd.com/api/v1/add?' # API URL (source: http://shifd.com/developers/v1/add)
 	params = {'content' : urllib.quote(content), 'type_id' : type_id, 'tag' : urllib.quote(tag), 'privacy' : privacy, 'format' : format}
@@ -70,14 +83,20 @@ def add(request, content='', type_id='1', tag='', privacy='public', format='json
 	return HttpResponse(response)
 
 def edit(request, sid='', content='', type_id='1', tag='', privacy='public', format='json'):
-	if (request.REQUEST['content']):
+	try:
 		content = request.REQUEST['content']
+	except:
+		pass
 	
-	if (request.GET['type_id']):
+	try:
 		type_id = request.REQUEST['type_id']
+	except:
+		pass
 	
-	if (request.REQUEST['sid']):
+	try:
 		content = request.REQUEST['sid']
+	except:
+		pass
 	
 	base_url = 'http://shifd.com/api/v1/edit?' # API URL (source: http://shifd.com/developers/v1/edit)
 	params = {'sid' : sid, 'type_id' : type_id, 'content' : urllib.quote(content), 'tag' : urllib.quote(tag), 'privacy' : privacy, 'format' : format}
@@ -87,8 +106,10 @@ def edit(request, sid='', content='', type_id='1', tag='', privacy='public', for
 	return HttpResponse(response)
 
 def delete(request, sid='', format='json'):
-	if (request.REQUEST['sid']):
+	try:
 		content = request.REQUEST['sid']
+	except:
+		pass
 	
 	base_url = 'http://shifd.com/api/v1/delete?' # API URL (source: http://shifd.com/developers/v1/delete)
 	params = {'sid' : sid, 'format' : format}
@@ -98,8 +119,10 @@ def delete(request, sid='', format='json'):
 	return HttpResponse(response)
 
 def archive(request, sid='', state='1', format='json'):
-	if (request.REQUEST['sid']):
+	try:
 		content = request.REQUEST['sid']
+	except:
+		pass
 	
 	base_url = 'http://shifd.com/api/v1/archive?' # API URL (source: http://shifd.com/developers/v1/archive)
 	params = {'sid' : sid, 'state' : state, 'format' : format}
@@ -109,8 +132,10 @@ def archive(request, sid='', state='1', format='json'):
 	return HttpResponse(response)
 
 def unarchive(request, sid='', state='0', format='json'):
-	if (request.REQUEST['sid']):
+	try:
 		content = request.REQUEST['sid']
+	except:
+		pass
 	
 	base_url = 'http://shifd.com/api/v1/archive?' # API URL (source: http://shifd.com/developers/v1/archive)
 	params = {'sid' : sid, 'state' : state, 'format' : format}
@@ -119,9 +144,11 @@ def unarchive(request, sid='', state='0', format='json'):
 	response = urllib2.urlopen(fullrequesturl)
 	return HttpResponse(response)
 
-def getExtraInfo(request, content, format='json'):
-	if (request.REQUEST['content']):
+def getExtraInfo(request, content='', format='json'):
+	try:
 		content = request.REQUEST['content']
+	except:
+		pass
 	
 	base_url = 'http://shifd.com/api/v1/getExtraInfo?' # API URL (source: http://shifd.com/developers/v1/getExtraInfo)
 	params = {'content' : urllib.quote(content), 'format' : format}
@@ -129,6 +156,9 @@ def getExtraInfo(request, content, format='json'):
 	fullrequesturl = addBasicAuthStringToUrl(requesturl, user, password)
 	response = urllib2.urlopen(fullrequesturl)
 	return HttpResponse(response)
+
+def callback(request, username='garlin', tag='', content='test', date_created='', sid='qB2Z', type='1'):
+	return HttpResponseRedirect(reverse('myproject.shifd_api.views.get',args=(sid,)))
 
 def addBasicAuthStringToUrl(in_url, u, p):
 	# Append usename & password to query string
@@ -139,5 +169,5 @@ def addBasicAuthStringToUrl(in_url, u, p):
 def parseShifDXml(in_xml):
 	return (data)
 
-def parseShifDJson(in_xml):
+def parseShifDJson(in_json):
 	return (data)
